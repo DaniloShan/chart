@@ -1,0 +1,28 @@
+{
+  "vendor.js": "js/vendor.js",
+  "home/home.js": "js/home/home.js",
+  "layout.js": "js/layout.js",
+  "runtime.js": "js/runtime.js",
+  "deps": {
+    "home/home.js": {
+      "js": [
+        "/public/js/runtime.js",
+        "/public/js/vendor.js",
+        "/public/js/home/home.js"
+      ],
+      "css": []
+    },
+    "layout.js": {
+      "js": [
+        "/public/js/runtime.js",
+        "/public/js/vendor.js",
+        "/public/js/layout.js"
+      ],
+      "css": []
+    }
+  },
+  "info": {
+    "publicPath": "http://172.18.187.82:9000/public/",
+    "buildPath": "public"
+  }
+}
