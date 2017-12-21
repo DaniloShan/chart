@@ -1,5 +1,8 @@
 "use strict";
 
+const crypto = require('crypto');
+const keyMap = require(process.cwd() + '/key.json');
+
 const statusMap = {
     400: '请求参数错误',
     401: '抱歉，你没有足够的权限',
@@ -86,6 +89,42 @@ function transform(type, obj) {
     return letterTrans(type, obj);
 }
 
+/**
+ *
+ * @type {{okex: string}}
+ */
+const hosts = {
+    okex: 'https://www.okex.com'
+};
+
+/**
+ * okex api sign function
+ * @param query
+ * @return {string}
+ */
+const okexSign = (query) => {
+    const md5 = crypto.createHash('md5');
+    const secret = keyMap.okex.secret;
+    const params = `?amount=1.0&api_key=${keyMap.okex.key}` + Object.keys(query).map(key => `${key}=${query[key]}`).join('&') + `&secret_key=${secret}`;
+    md5.update(params);
+    return md5.digest('hex').toUpperCase();
+};
+
+/**
+ *
+ * @type {{urls: {okex: {kline: (function(*, *=))}}}}
+ */
+const settings = {
+    urls: {
+        okex: {
+            kline: (symbol, type = '30min') => {
+                const sign = okexSign({ symbol, type });
+                return `${hosts.okex}/api/v1/kline.do?symbol=${symbol}_usdt&type=${type}&sign=${sign}`;
+            }
+        }
+    }
+};
+
 module.exports = {
     errorObj: (status = 400, msg = '') => ({
         status,
@@ -151,5 +190,11 @@ module.exports = {
                 isLastPage,
             })
         });
-    }
+    },
+
+    settings,
+
+    hosts,
+
+    okexSign,
 };
