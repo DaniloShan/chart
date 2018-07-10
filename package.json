@@ -4,19 +4,23 @@
   "description": "",
   "private": true,
   "dependencies": {
+    "colors": "^1.3.0",
     "egg": "^2.0.0",
     "egg-bin": "^4.3.5",
     "egg-logger": "^1.5.0",
+    "egg-mysql": "^3.0.0",
     "egg-scripts": "^2.1.0",
     "egg-validate": "^1.0.0",
     "egg-view-react": "^1.0.0",
     "egg-view-react-ssr": "^2.1.0",
+    "moment": "^2.22.1",
     "react": "^16.0.0",
     "react-dom": "^16.1.1",
     "react-router": "^4.2.0",
     "react-router-config": "^1.0.0-beta.4",
     "recharts": "^1.0.0-beta.6",
-    "superagent": "^3.8.2"
+    "superagent": "^3.8.2",
+    "urijs": "^1.19.0"
   },
   "devDependencies": {
     "antd": "^2.13.2",
@@ -88,7 +92,8 @@
     "client": "cross-env easywebpack server dev",
     "start-test": "cross-env EGG_SERVER_ENV=test node index.js",
     "kill-port": "kill -9 $(lsof -i:8888 |grep 'node'|aw '{print $2}') ",
-    "fix": "eslint --fix ."
+    "fix": "eslint --fix .",
+    "clean": "cross-env easywebpack clean"
   },
   "ci": {
     "version": "8"

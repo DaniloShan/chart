@@ -18,5 +18,17 @@ module.exports = app => {
         'access'
     ];
 
+    exports.mysql = {
+        client: {
+            host: 'localhost',
+            port: '3306',
+            user: 'abacus',
+            password: 'abacus+1S',
+            database: 'abacus',
+        },
+        app: true,
+        agent: false,
+    };
+
     return exports;
 };

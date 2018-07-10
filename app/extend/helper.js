@@ -112,14 +112,14 @@ const okexSign = (query) => {
 
 /**
  *
- * @type {{urls: {okex: {kline: (function(*, *=))}}}}
+ * @type {{urls: {okex: {kline: (function(*, *=, *=, *=))}}}}
  */
 const settings = {
     urls: {
         okex: {
-            kline: (symbol, type = '30min') => {
+            kline: (symbol, type = '30min', size = 200, since = '') => {
                 const sign = okexSign({ symbol, type });
-                return `${hosts.okex}/api/v1/kline.do?symbol=${symbol}_usdt&type=${type}&sign=${sign}`;
+                return `${hosts.okex}/api/v1/kline.do?symbol=${symbol}_usdt&type=${type}&size=${size}&since=${since}&sign=${sign}`;
             }
         }
     }

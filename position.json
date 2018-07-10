@@ -1,0 +1,9 @@
+{
+    "bitcoin": {
+        "lastPrice": 0,
+        "used": 0,
+        "total": 10000,
+        "hold": {},
+        "target": {}
+    }
+}

@@ -5,6 +5,11 @@ exports.reactssr = {
     package: 'egg-view-react-ssr'
 };
 
+exports.mysql = {
+    enable: true,
+    package: 'egg-mysql',
+};
+
 // exports.react = {
 //     enable: true,
 //     package: 'egg-view-react',
